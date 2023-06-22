@@ -1,0 +1,4 @@
+C:/src/search_engine/search_engine/build/CMakeFiles/search_engine.dir
+C:/src/search_engine/search_engine/build/CMakeFiles/Boost_test.dir
+C:/src/search_engine/search_engine/build/CMakeFiles/ALL_BUILD.dir
+C:/src/search_engine/search_engine/build/CMakeFiles/ZERO_CHECK.dir

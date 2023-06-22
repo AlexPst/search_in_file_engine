@@ -2,6 +2,7 @@
 #include "include/json.hpp"
 #include <fstream>
 
+
 using json = nlohmann::json;
 using namespace std;
 
@@ -26,7 +27,7 @@ void ConverterJson::createConfJson()
 
 	cout << setw(4) << configDoc << endl;
 
-	ofstream file("config.json");
+	
 
 	for (auto& it : configDoc.at("files"))
 	{
@@ -36,8 +37,27 @@ void ConverterJson::createConfJson()
 	{
 		cout << it << endl;
 	}
+	string path = "config.json";
+	
 
-	file << configDoc;
+	FILE* checkFile;
+	checkFile = fopen("config.json", "r");
+
+	
+	if (checkFile!=NULL) 
+	{
+		cout << "File exists" << endl;
+	}
+	else 
+	{
+		//file("config.json");
+		cout << "creating file" << endl;
+		ofstream file("config.json");
+		file << setw(4) << configDoc << endl;
+	}
+	
+	
+	
 }
 
 void ConverterJson::createRequestDoc()
@@ -71,6 +91,7 @@ map<string, string> ConverterJson::GetRequests()
 	vector<string>elems;
 	map<string, string> requestsElems;
 	string elem;
+	
 	if (requestFile.is_open()) 
 	{
 		json requestJson;
@@ -80,7 +101,8 @@ map<string, string> ConverterJson::GetRequests()
 			if (requestJson.is_object()) {
 				for (auto& it : requestJson.at("requests"))
 				{
-					requestsElems[it.at("id")] = it.at("request");
+					elem = it.at("request");
+					elems.push_back(elem);
 				}
 			
 			}
@@ -92,7 +114,7 @@ map<string, string> ConverterJson::GetRequests()
 		int count = 0;
 		for (auto& it : requestsElems) 
 		{
-			vector<string>itSecond;
+			//vector<string>itSecond;
 			for (auto it2 : it.second) 
 			{
 				requests[count].push_back(it.second);
@@ -101,13 +123,13 @@ map<string, string> ConverterJson::GetRequests()
 			
 		}
 
-		for (auto& it : requests) 
+		/*for (auto& it : requests) 
 		{
 			for (auto& it2 : requests[it.first])
 			{
 				cout << it.first << " " << it2 << endl;
 			}
-		}
+		}*/
 	}
 
 	return requestsElems;

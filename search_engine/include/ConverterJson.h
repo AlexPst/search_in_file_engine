@@ -22,13 +22,13 @@ public:
 	map<string, string> GetRequests();
 	map<int, vector<string>>requests;
 	vector<string> getPaths();
-	/*vector<string> GetTextDocuments();
+	vector<string> GetTextDocuments();
 
 	int GetResponsesLimit();
 
 	
 
-	void putAnswers(vector<vector<pair<int, float>>> answers);*/
+	//void putAnswers(vector<vector<pair<int, float>>> answers);
 
 private:
 	//vector<string> requests;

@@ -7,11 +7,14 @@ using namespace std;
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	//cout << "Hello CMake." << endl;
 	cj->createConfJson();
 	cj->createRequestDoc();
 	cj->GetRequests();
 
 	ii->accesToDocs();
+	ii->showWords();
+	ii->createJsonReport();
+	ii->compileData();
 	return 0;
 }
